@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KurthTechnik — Gripper Drone Kit</title>
-<meta name="description" content="Build your own indoor drone with a real gripper arm. 10 missions, ages 9–12. Designed by an engineer, built by kids.">
+<title>KurthTechnik — Engineering Kits</title>
+<meta name="description" content="Gripper Drone Kit (ages 9–14) and OrbBot Self-Balancing Robot (university). Designed by an engineer, built by you.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -215,6 +215,49 @@
   .cta-section h2 { font-size: 40px; font-weight: 700; letter-spacing: -1.5px; margin-bottom: 12px; }
   .cta-section p { color: var(--text-sub); font-size: 16px; margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto; }
 
+  /* ORBBOT */
+  .orbbot-section {
+    padding: 100px 48px;
+    border-top: 3px solid var(--red);
+  }
+  .orbbot-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+    max-width: 1100px; margin: 0 auto; align-items: center;
+  }
+  .orbbot-visual {
+    display: flex; align-items: center; justify-content: center;
+    background: var(--bg-elevated); border-radius: 24px; height: 380px;
+    border: 1px solid var(--border); font-size: 80px;
+    position: relative; overflow: hidden;
+  }
+  .orbbot-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; color: var(--red); letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 16px; font-weight: 500;
+  }
+  .orbbot-content h2 {
+    font-size: 44px; font-weight: 700; letter-spacing: -2px;
+    line-height: 1.1; margin-bottom: 16px;
+  }
+  .orbbot-content h2 em { font-style: normal; color: var(--red); }
+  .orbbot-content p {
+    font-size: 16px; color: var(--text-sub); line-height: 1.7; margin-bottom: 16px;
+    max-width: 440px;
+  }
+  .orbbot-specs {
+    display: flex; gap: 24px; margin-bottom: 24px; flex-wrap: wrap;
+  }
+  .orbbot-spec {
+    text-align: center;
+  }
+  .orbbot-spec-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 20px; font-weight: 600; color: #1a1a1a;
+  }
+  .orbbot-spec-label {
+    font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;
+  }
+
   /* FOOTER */
   .footer {
     padding: 32px 48px;
@@ -244,7 +287,9 @@
     .missions-grid { grid-template-columns: 1fr; }
     .features-grid { grid-template-columns: 1fr; }
     .box-grid { grid-template-columns: 1fr; }
-    .specs-section, .missions-section, .features-section, .box-section, .cta-section { padding: 60px 24px; }
+    .specs-section, .missions-section, .features-section, .box-section, .cta-section, .orbbot-section { padding: 60px 24px; }
+    .orbbot-grid { grid-template-columns: 1fr; gap: 40px; }
+    .orbbot-visual { height: 240px; font-size: 60px; }
     .footer { padding: 24px; flex-direction: column; text-align: center; }
   }
 </style>
@@ -254,24 +299,24 @@
 <nav>
   <a href="#" class="nav-brand">Kurth<span>Technik</span></a>
   <ul class="nav-links">
-    <li><a href="#specs">Specs</a></li>
+    <li><a href="#drone">Gripper Drone</a></li>
+    <li><a href="#orbbot">OrbBot</a></li>
     <li><a href="#missions">Missions</a></li>
-    <li><a href="#box">What's Included</a></li>
   </ul>
-  <a href="https://wa.me/85265427963?text=Hi%21%20I%27m%20interested%20in%20the%20Gripper%20Drone%20Kit.%0A-%20Name%3A%0A-%20Questions%3A%0A%0AKurthTechnik%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="nav-cta">Get Notified</a>
+  <a href="https://wa.me/85265427963?text=Hi%21%20I%27m%20interested%20in%20a%20KurthTechnik%20Kit.%0A-%20Name%3A%0A-%20Kit%3A%20Gripper%20Drone%20%2F%20OrbBot%0A%0AKurthTechnik%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="nav-cta">Get Notified</a>
   <div class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open');">
     <span></span><span></span><span></span>
   </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="drone">
   <div class="hero-grid">
     <div class="hero-content">
-      <div class="hero-tag">KurthTechnik — Robotics Kits</div>
+      <div class="hero-tag">KurthTechnik — Engineering Kits</div>
       <h1>Gripper<em>Drone</em></h1>
-      <p class="hero-desc">Build your own indoor drone with a real gripper arm. Pick up objects, fly missions, compete with friends. Everything from scratch — ages 9 to 12.</p>
-      <div class="hero-shipping">Coming Soon · Hong Kong</div>
+      <p class="hero-desc">Build your own indoor drone with a real gripper arm. Pick up objects, fly missions, compete with friends. Everything from scratch — ages 9 to 14.</p>
+      <div class="hero-shipping">Coming Soon · Hong Kong · Ages 9–14</div>
       <div class="hero-actions">
         <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20reserve%20a%20Gripper%20Drone%20Kit.%0A-%20Name%3A%0A-%20Address%3A%0A-%20Quantity%3A%0A%0AKurthTechnik%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="btn-red">Reserve a Kit</a>
         <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20be%20notified%20when%20the%20Gripper%20Drone%20Kit%20is%20available.%0A-%20Name%3A%0A-%20Email%3A%0A%0AKurthTechnik%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="btn-ghost">Get Notified</a>
@@ -485,6 +530,44 @@
   <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
     <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20reserve%20a%20Gripper%20Drone%20Kit.%0A-%20Name%3A%0A-%20Address%3A%0A-%20Quantity%3A%0A%0AKurthTechnik%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="btn-red">Reserve a Kit</a>
     <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20be%20notified%20when%20the%20Gripper%20Drone%20Kit%20is%20available.%0A-%20Name%3A%0A-%20Email%3A%0A%0AKurthTechnik%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="btn-ghost">Get Notified</a>
+  </div>
+</section>
+
+<!-- ORBBOT -->
+<section class="orbbot-section" id="orbbot">
+  <div class="orbbot-grid">
+    <div class="orbbot-visual">
+      &#9878;&#65039;
+      <span class="hero-visual-label">photo coming soon</span>
+    </div>
+    <div class="orbbot-content">
+      <div class="orbbot-tag">Also available</div>
+      <h2>Orb<em>Bot</em></h2>
+      <p>A DIY ball-balancing robot kit. Three-axis stabilisation, LQR control, real engineering. For university students and advanced builders.</p>
+      <div class="orbbot-specs">
+        <div class="orbbot-spec">
+          <div class="orbbot-spec-value">3</div>
+          <div class="orbbot-spec-label">Axes</div>
+        </div>
+        <div class="orbbot-spec">
+          <div class="orbbot-spec-value">LQR</div>
+          <div class="orbbot-spec-label">Control</div>
+        </div>
+        <div class="orbbot-spec">
+          <div class="orbbot-spec-value">6-DOF</div>
+          <div class="orbbot-spec-label">IMU</div>
+        </div>
+        <div class="orbbot-spec">
+          <div class="orbbot-spec-value">$150</div>
+          <div class="orbbot-spec-label">USD</div>
+        </div>
+      </div>
+      <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 24px;">Full source code, CAD files, and schematics included. Open source.</p>
+      <div class="hero-actions">
+        <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20reserve%20an%20OrbBot%20kit.%0A-%20Name%3A%0A-%20Shipping%20address%3A%0A-%20Quantity%3A%0A%0AKurthTechnik%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="btn-red">Reserve OrbBot — $150</a>
+        <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20pre-register%20for%20the%20OrbBot.%0A-%20Name%3A%0A-%20Email%3A%0A%0AKurthTechnik%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="btn-ghost">Pre-Register</a>
+      </div>
+    </div>
   </div>
 </section>
 
