@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KurthTechnik — Gripper Drone Kit · Curriculum Overview</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #e63946;
+    --blue: #2563eb;
+    --green: #16a34a;
+    --orange: #ea580c;
+    --purple: #9333ea;
+    --text: #1a1a1a;
+    --text-sub: #555;
+    --text-muted: #888;
+    --border: #e5e5e5;
+    --bg-light: #f8f8f6;
+  }
+
+  @page {
+    size: A4;
+    margin: 18mm 16mm;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    line-height: 1.55;
+    font-size: 10.5px;
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* HEADER */
+  .doc-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    padding-bottom: 16px; border-bottom: 2px solid var(--text);
+    margin-bottom: 20px;
+  }
+  .doc-brand {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px; font-weight: 600;
+  }
+  .doc-brand span { color: var(--red); }
+  .doc-title {
+    font-size: 22px; font-weight: 700; letter-spacing: -0.8px;
+    line-height: 1.2;
+  }
+  .doc-subtitle {
+    font-size: 11px; color: var(--text-sub); margin-top: 2px;
+  }
+  .doc-meta {
+    text-align: right; font-size: 9px; color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* INTRO */
+  .intro {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    margin-bottom: 24px; padding: 16px;
+    background: var(--bg-light); border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .intro h3 {
+    font-size: 11px; font-weight: 600; margin-bottom: 6px;
+    text-transform: uppercase; letter-spacing: 1px; color: var(--red);
+  }
+  .intro p { font-size: 10px; color: var(--text-sub); line-height: 1.5; }
+
+  /* LEGEND */
+  .legend {
+    display: flex; gap: 16px; margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex; align-items: center; gap: 5px;
+    font-size: 9px; font-weight: 500;
+  }
+  .legend-dot {
+    width: 10px; height: 10px; border-radius: 3px;
+  }
+
+  /* STEP ROW */
+  .step {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+    border: 1px solid var(--border); border-radius: 8px;
+    overflow: hidden; margin-bottom: 10px;
+    break-inside: avoid;
+  }
+
+  .step-left {
+    padding: 14px 16px;
+    background: #fff;
+    border-right: 1px solid var(--border);
+  }
+  .step-right {
+    padding: 14px 16px;
+    background: var(--bg-light);
+  }
+
+  .step-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; font-weight: 600; color: var(--red);
+    letter-spacing: 1.5px; text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .step-title {
+    font-size: 13px; font-weight: 700; margin-bottom: 6px;
+    letter-spacing: -0.3px;
+  }
+  .step-desc {
+    font-size: 10px; color: var(--text-sub); margin-bottom: 8px;
+    line-height: 1.5;
+  }
+  .step-ai {
+    font-size: 9px; color: var(--blue); font-weight: 500;
+    padding: 4px 8px; background: rgba(37,99,235,0.06);
+    border-radius: 4px; display: inline-block;
+  }
+
+  /* SKILL TAGS */
+  .skills-group {
+    margin-bottom: 8px;
+  }
+  .skills-group:last-child { margin-bottom: 0; }
+  .skills-label {
+    font-size: 8.5px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 1px; margin-bottom: 4px;
+  }
+  .skills-label.math { color: var(--red); }
+  .skills-label.systems { color: var(--green); }
+  .skills-label.creative { color: var(--purple); }
+  .skills-label.problem { color: var(--orange); }
+
+  .skill-tags {
+    display: flex; flex-wrap: wrap; gap: 4px;
+  }
+  .skill-tag {
+    font-size: 9px; padding: 2px 7px; border-radius: 3px;
+    font-weight: 500;
+  }
+  .skill-tag.math {
+    background: rgba(230,57,70,0.08); color: var(--red);
+    border: 1px solid rgba(230,57,70,0.15);
+  }
+  .skill-tag.systems {
+    background: rgba(22,163,74,0.08); color: var(--green);
+    border: 1px solid rgba(22,163,74,0.15);
+  }
+  .skill-tag.creative {
+    background: rgba(147,51,234,0.08); color: var(--purple);
+    border: 1px solid rgba(147,51,234,0.15);
+  }
+  .skill-tag.problem {
+    background: rgba(234,88,12,0.08); color: var(--orange);
+    border: 1px solid rgba(234,88,12,0.15);
+  }
+
+  /* COLUMN HEADERS */
+  .col-headers {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+    margin-bottom: 8px;
+  }
+  .col-header {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 1.5px; color: var(--text-muted);
+    padding: 0 4px;
+  }
+
+  /* PHASE DIVIDER */
+  .phase {
+    margin: 20px 0 10px;
+    padding: 8px 12px;
+    background: var(--text);
+    color: #fff;
+    border-radius: 6px;
+    display: flex; justify-content: space-between; align-items: center;
+    break-before: auto;
+  }
+  .phase-title {
+    font-size: 12px; font-weight: 700;
+  }
+  .phase-level {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 1px;
+  }
+
+  /* FOOTER */
+  .doc-footer {
+    margin-top: 24px; padding-top: 12px;
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between;
+    font-size: 8.5px; color: var(--text-muted);
+  }
+
+  /* PRINT */
+  @media print {
+    body { font-size: 10px; }
+    .step { break-inside: avoid; }
+    .phase { break-before: auto; break-after: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="doc-header">
+  <div>
+    <div class="doc-brand">Kurth<span>Technik</span></div>
+    <div class="doc-title">Gripper Drone Kit</div>
+    <div class="doc-subtitle">What your child learns at every step.</div>
+  </div>
+  <div class="doc-meta">
+    For Parents & Schools<br>
+    Ages 9–14 · HK Curriculum P4–P6<br>
+    dankur94.github.io/kurthtechnik
+  </div>
+</div>
+
+<!-- INTRO -->
+<div class="intro">
+  <div>
+    <h3>Our Approach</h3>
+    <p>Your child builds a real indoor drone with a mechanical gripper arm. AI tools help them write code and solve problems. They never hear the word "math" — they calculate because they must, not because they should. Every wrong calculation has a visible consequence: the drone tips, the gripper misses.</p>
+  </div>
+  <div>
+    <h3>Skills Framework</h3>
+    <p>Each build step maps to competencies from the HK Mathematics Curriculum (P4–P6) and the World Economic Forum's Future of Jobs skills: complex problem-solving, systems thinking, creativity &amp; initiative. Left column = what the child does. Right column = what they learn.</p>
+  </div>
+</div>
+
+<!-- LEGEND -->
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background: var(--red);"></div> Mathematics (HK P4–P6)</div>
+  <div class="legend-item"><div class="legend-dot" style="background: var(--green);"></div> Systems Thinking &amp; Analysis</div>
+  <div class="legend-item"><div class="legend-dot" style="background: var(--purple);"></div> Creativity &amp; Initiative</div>
+  <div class="legend-item"><div class="legend-dot" style="background: var(--orange);"></div> Complex Problem-Solving</div>
+  <div class="legend-item"><div class="legend-dot" style="background: var(--blue);"></div> AI-Assisted Learning</div>
+</div>
+
+<!-- COLUMN HEADERS -->
+<div class="col-headers">
+  <div class="col-header">Build Step &amp; AI Integration</div>
+  <div class="col-header">Skills &amp; Competencies Gained</div>
+</div>
+
+<!-- ==================== PHASE 1 ==================== -->
+<div class="phase">
+  <div class="phase-title">Phase 1 — Assembly: "I'm building a drone"</div>
+  <div class="phase-level">Mission 01–03</div>
+</div>
+
+<!-- STEP 1 -->
+<div class="step">
+  <div class="step-left">
+    <div class="step-num">Step 01</div>
+    <div class="step-title">Assemble the Frame</div>
+    <div class="step-desc">Identify parts from the BOM. Mount the F330 frame arms to the center plate. Attach the landing gear. Count screws, check symmetry.</div>
+    <div class="step-ai">AI: Identifies parts from photos, explains assembly order</div>
+  </div>
+  <div class="step-right">
+    <div class="skills-group">
+      <div class="skills-label math">Mathematics</div>
+      <div class="skill-tags">
+        <span class="skill-tag math">Counting &amp; sorting</span>
+        <span class="skill-tag math">Symmetry (P4 Geo)</span>
+        <span class="skill-tag math">Length: mm/cm (P4)</span>
+      </div>
+    </div>
+    <div class="skills-group">
+      <div class="skills-label systems">Systems Thinking</div>
+      <div class="skill-tags">
+        <span class="skill-tag systems">Part–whole relationships</span>
+        <span class="skill-tag systems">Sequential assembly logic</span>
+      </div>
+    </div>
+    <div class="skills-group">
+      <div class="skills-label problem">Problem-Solving</div>
+      <div class="skill-tags">
+        <span class="skill-tag problem">Matching parts to diagram</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="step">
+  <div class="step-left">
+    <div class="step-num">Step 02</div>
+    <div class="step-title">Mount Motors &amp; ESCs</div>
+    <div class="step-desc">Install 4 brushless motors (CW+CCW), connect ESCs. Identify motor rotation direction. Solder XT60 connectors.</div>
+    <div class="step-ai">AI: Generates wiring diagrams, checks motor direction logic</div>
+  </div>
+  <div class="step-right">
+    <div class="skills-group">
+      <div class="skills-label math">Mathematics</div>
+      <div class="skill-tags">
+        <span class="skill-tag math">Multiplication: 4 × $8.50 (P4)</span>
+        <span class="skill-tag math">Patterns: CW/CCW alternating</span>
+        <span class="skill-tag math">Weight: g/kg (P4)</span>
+      </div>
+    </div>
+    <div class="skills-group">
+      <div class="skills-label systems">Systems Thinking</div>
+      <div class="skill-tags">
+        <span class="skill-tag systems">Input → output (power → spin)</span>
+        <span class="skill-tag systems">Cause &amp; effect (wrong direction = flip)</span>
+      </div>
+    </div>
+    <div class="skills-group">
+      <div class="skills-label creative">Creativity</div>
+      <div class="skill-tags">
+        <span class="skill-tag creative">Cable management decisions</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="step">
+  <div class="step-left">
+    <div class="step-num">Step 03</div>
+    <div class="step-title">Connect Flight Controller &amp; Receiver</div>
+    <div class="step-desc">Wire the F411 flight controller. Bind the FlySky transmitter to receiver. Configure basic settings in Betaflight.</div>
+    <div class="step-ai">AI: Explains protocol settings, helps debug connection issues</div>
+  </div>
+  <div class="step-right">
+    <div class="skills-group">
+      <div class="skills-label math">Mathematics</div>
+      <div class="skill-tags">
+        <span class="skill-tag math">Reading tables (P4 Data)</span>
+        <span class="skill-tag math">Channel numbers 1–6</span>
+      </div>
+    </div>
+    <div class="skills-group">
+      <div class="skills-label systems">Systems Thinking</div>
+      <div class="skill-tags">
+        <span class="skill-tag systems">Signal flow: Tx → Rx → FC → ESC → Motor</span>
+        <span class="skill-tag systems">System dependencies</span>
+      </div>
+    </div>
+    <div class="skills-group">
+      <div class="skills-label problem">Problem-Solving</div>
+      <div class="skill-tags">
+        <span class="skill-tag problem">Debugging: "Motor 3 doesn't spin — why?"</span>
+        <span class="skill-tag problem">Systematic elimination</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PHASE 2 ==================== -->
+<div class="phase">
+  <div class="phase-title">Phase 2 — First Flights: "I'm flying!"</div>
+  <div class="phase-level">Mission 04–06</div>
+</div>
+
+<!-- STEP 4 -->
+<div class="step">
+  <div class="step-left">
+    <div class="step-num">Step 04</div>
+    <div class="step-title">Pre-Flight Check &amp; Weight Budget</div>
+    <div class="step-desc">Weigh the drone on a kitchen scale. Calculate total weight vs. max thrust. Check: can it fly? Thrust-to-weight ratio must be > 1.5:1.</div>
+    <div class="step-ai">AI: Calculates thrust margins, visualises weight distribution</div>
+  </div>
+  <div class="step-right">
+    <div class="skills-group">
+      <div class="skills-label math">Mathematics</div>
+      <div class="skill-tags">
+        <span class="skill-tag math">Addition: 380g + 120g + 130g (P4)</span>
+        <span class="skill-tag math">Ratios: 2.4kg ÷ 1.13kg (P5)</span>
+        <span class="skill-tag math">Weight units g/kg (P4)</span>
+        <span class="skill-tag math">Inequalities: > 1.5 (P5)</span>
+      </div>
+    </div>
+    <div class="skills-group">
+      <div class="skills-label systems">Systems Thinking</div>
+      <div class="skill-tags">
+        <span class="skill-tag systems">Constraint analysis (weight budget)</span>
+        <span class="skill-tag systems">Trade-offs: heavier = less agile</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 5 -->
+<div class="step">
+  <div class="step-left">
+    <div class="step-num">Step 05</div>
+    <div class="step-title">Hover &amp; Land on Target</div>
+    <div class="step-desc">First takeoff. Hold hover at 1m. Land on a 50cm target zone. Use a floor grid with coordinates. Track flight time with stopwatch.</div>
+    <div class="step-ai">AI: Suggests PID adjustments if drone oscillates</div>
+  </div>
+  <div class="step-right">
+    <div class="skills-group">
+      <div class="skills-label math">Mathematics</div>
+      <div class="skill-tags">
+        <span class="skill-tag math">Coordinates: fly to (3,2) (P5 Geo)</span>
+        <span class="skill-tag math">Time: minutes &amp; seconds (P4)</span>
+        <span class="skill-tag math">Percentages: throttle 70% (P5)</span>
+        <span class="skill-tag math">Estimation &amp; rounding</span>
+      </div>
+    </div>
+    <div class="skills-group">
+      <div class="skills-label problem">Problem-Solving</div>
+      <div class="skill-tags">
+        <span class="skill-tag problem">Real-time spatial adjustment</span>
+        <span class="skill-tag problem">Trial &amp; error with feedback loop</span>
+      </div>
+    </div>
+    <div class="skills-group">
+      <div class="skills-label creative">Creativity</div>
+      <div class="skill-tags">
+        <span class="skill-tag creative">Developing personal flight technique</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 6 -->
+<div class="step">
+  <div class="step-left">
+    <div class="step-num">Step 06</div>
+    <div class="step-title">Battery Management &amp; Flight Logging</div>
+    <div class="step-desc">Measure LiPo voltage before/after flights. Log flight times in a table. Calculate average flight time over 5 flights. Check battery temperature with IR thermometer.</div>
+    <div class="step-ai">AI: Creates flight log charts, predicts remaining battery life</div>
+  </div>
+  <div class="step-right">
+    <div class="skills-group">
+      <div class="skills-label math">Mathematics</div>
+      <div class="skill-tags">
+        <span class="skill-tag math">Decimals: 11.4V vs 12.6V (P5)</span>
+        <span class="skill-tag math">Averages: 5 flights (P5 Data)</span>
+        <span class="skill-tag math">Bar charts (P4 Data)</span>
+        <span class="skill-tag math">Temperature: max 45°C (P4)</span>
+        <span class="skill-tag math">Fractions: 3/4 battery (P4)</span>
+      </div>
+    </div>
+    <div class="skills-group">
+      <div class="skills-label systems">Systems Thinking</div>
+      <div class="skill-tags">
+        <span class="skill-tag systems">Data-driven decision making</span>
+        <span class="skill-tag systems">Resource management</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PHASE 3 ==================== -->
+<div class="phase">
+  <div class="phase-title">Phase 3 — Gripper Missions: "I'm grabbing things"</div>
+  <div class="phase-level">Mission 07–09</div>
+</div>
+
+<!-- STEP 7 -->
+<div class="step">
+  <div class="step-left">
+    <div class="step-num">Step 07</div>
+    <div class="step-title">3D-Print &amp; Assemble the Gripper</div>
+    <div class="step-desc">Print 5 gripper parts (fingers, base, tendon guides, servo spools, landing extension). Assemble with ball bearings. Thread Dyneema tendon cables through guides.</div>
+    <div class="step-ai">AI: Calculates filament needed, generates assembly sequence</div>
+  </div>
+  <div class="step-right">
+    <div class="skills-group">
+      <div class="skills-label math">Mathematics</div>
+      <div class="skill-tags">
+        <span class="skill-tag math">Volume &amp; filament (P6 Geo)</span>
+        <span class="skill-tag math">Tolerances: 0.2mm (P5 Decimals)</span>
+        <span class="skill-tag math">Measurement: caliper (P4)</span>
+      </div>
+    </div>
+    <div class="skills-group">
+      <div class="skills-label creative">Creativity</div>
+      <div class="skill-tags">
+        <span class="skill-tag creative">Understanding mechanical design</span>
+        <span class="skill-tag creative">3D spatial reasoning</span>
+      </div>
+    </div>
+    <div class="skills-group">
+      <div class="skills-label problem">Problem-Solving</div>
+      <div class="skill-tags">
+        <span class="skill-tag problem">Parts don't fit? Measure, identify, reprint</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 8 -->
+<div class="step">
+  <div class="step-left">
+    <div class="step-num">Step 08</div>
+    <div class="step-title">Calibrate Servos &amp; Grip Force</div>
+    <div class="step-desc">Set servo angles: 90° = closed, 45° = open. Test grip on different objects. Find the sweet spot. Update weight budget with gripper added (120g).</div>
+    <div class="step-ai">AI: Generates servo control code, suggests angle presets</div>
+  </div>
+  <div class="step-right">
+    <div class="skills-group">
+      <div class="skills-label math">Mathematics</div>
+      <div class="skill-tags">
+        <span class="skill-tag math">Angles: 45°, 90°, 135° (P5 Geo)</span>
+        <span class="skill-tag math">Variables: x = angle (P6 Algebra)</span>
+        <span class="skill-tag math">Weight limit: 1130g − 750g = ? (P4)</span>
+      </div>
+    </div>
+    <div class="skills-group">
+      <div class="skills-label systems">Systems Thinking</div>
+      <div class="skill-tags">
+        <span class="skill-tag systems">Parameter tuning (angle → grip force)</span>
+        <span class="skill-tag systems">Feedback loops (grip too tight = crush)</span>
+      </div>
+    </div>
+    <div class="skills-group">
+      <div class="skills-label problem">Problem-Solving</div>
+      <div class="skill-tags">
+        <span class="skill-tag problem">Optimisation: best angle for each object</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 9 -->
+<div class="step">
+  <div class="step-left">
+    <div class="step-num">Step 09</div>
+    <div class="step-title">Grab &amp; Transport Missions</div>
+    <div class="step-desc">Mission sequence: ping pong ball (5g) → apple (150g) → water bottle (500g). Each object requires different servo settings and flight technique. Time limit: 1 battery.</div>
+    <div class="step-ai">AI: Tracks mission times, suggests strategy improvements</div>
+  </div>
+  <div class="step-right">
+    <div class="skills-group">
+      <div class="skills-label math">Mathematics</div>
+      <div class="skill-tags">
+        <span class="skill-tag math">Division: 8 min ÷ 3 objects (P4)</span>
+        <span class="skill-tag math">Probability: which ball? (P5 Data)</span>
+        <span class="skill-tag math">Ordering: lightest → heaviest</span>
+      </div>
+    </div>
+    <div class="skills-group">
+      <div class="skills-label creative">Creativity</div>
+      <div class="skill-tags">
+        <span class="skill-tag creative">Strategy design under constraints</span>
+        <span class="skill-tag creative">Route planning &amp; optimisation</span>
+      </div>
+    </div>
+    <div class="skills-group">
+      <div class="skills-label problem">Problem-Solving</div>
+      <div class="skill-tags">
+        <span class="skill-tag problem">Multi-variable optimisation</span>
+        <span class="skill-tag problem">Time &amp; resource pressure</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PHASE 4 ==================== -->
+<div class="phase">
+  <div class="phase-title">Phase 4 — Custom Design: "My own drone"</div>
+  <div class="phase-level">Mission 10+</div>
+</div>
+
+<!-- STEP 10 -->
+<div class="step">
+  <div class="step-left">
+    <div class="step-num">Step 10</div>
+    <div class="step-title">Design Custom Shells &amp; Upgrades</div>
+    <div class="step-desc">Design custom drone shells in the web app. Choose from 5 colours. Calculate if the shell fits (area) and how much filament it needs (volume). Respect the 15mm snap-fit grid.</div>
+    <div class="step-ai">AI: Generates 3D designs from descriptions, checks constraints</div>
+  </div>
+  <div class="step-right">
+    <div class="skills-group">
+      <div class="skills-label math">Mathematics</div>
+      <div class="skill-tags">
+        <span class="skill-tag math">Area &amp; perimeter (P5 Geo)</span>
+        <span class="skill-tag math">Volume (P6 Geo)</span>
+        <span class="skill-tag math">Grid patterns: 15mm (P5 Algebra)</span>
+        <span class="skill-tag math">Equations: budget − cost = ? (P6)</span>
+      </div>
+    </div>
+    <div class="skills-group">
+      <div class="skills-label creative">Creativity</div>
+      <div class="skill-tags">
+        <span class="skill-tag creative">Original design within constraints</span>
+        <span class="skill-tag creative">Aesthetic &amp; functional decisions</span>
+        <span class="skill-tag creative">Personal expression through engineering</span>
+      </div>
+    </div>
+    <div class="skills-group">
+      <div class="skills-label systems">Systems Thinking</div>
+      <div class="skill-tags">
+        <span class="skill-tag systems">Design constraints (weight, size, grid)</span>
+        <span class="skill-tag systems">Full system evaluation</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SUMMARY -->
+<div style="margin-top: 24px; padding: 16px; background: var(--bg-light); border-radius: 8px; border: 1px solid var(--border);">
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; text-align: center;">
+    <div>
+      <div style="font-size: 22px; font-weight: 700; color: var(--red);">20+</div>
+      <div style="font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Math Topics (P4–P6)</div>
+    </div>
+    <div>
+      <div style="font-size: 22px; font-weight: 700; color: var(--green);">10</div>
+      <div style="font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Systems Thinking</div>
+    </div>
+    <div>
+      <div style="font-size: 22px; font-weight: 700; color: var(--purple);">7</div>
+      <div style="font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Creativity &amp; Initiative</div>
+    </div>
+    <div>
+      <div style="font-size: 22px; font-weight: 700; color: var(--orange);">8</div>
+      <div style="font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Problem-Solving</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="doc-footer">
+  <span>&copy; KurthTechnik — Space of Possibilities Limited, Hong Kong</span>
+  <span>contact@spaceop.education · wa.me/85265427963</span>
+  <span>dankur94.github.io/kurthtechnik</span>
+</div>
+
+</body>
+</html>
