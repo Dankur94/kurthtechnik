@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KurthTechnik — OrbBot Self-Balancing Robot Kit</title>
-<meta name="description" content="OrbBot — a DIY ball-balancing robot kit. LQR control, IMU sensors, 3-axis balancing. Designed in Germany, shipped worldwide.">
+<title>KurthTechnik — Gripper Drone Kit</title>
+<meta name="description" content="Build your own indoor drone with a real gripper arm. 10 missions, ages 9–12. Designed by an engineer, built by kids.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -15,7 +15,6 @@
     --text-sub: #666;
     --text-muted: #999;
     --red: #e63946;
-    --white: #1a1a1a;
     --border: rgba(0,0,0,0.08);
   }
 
@@ -48,7 +47,7 @@
   .nav-links a:hover { color: #1a1a1a; }
   .nav-cta {
     padding: 10px 24px; border-radius: 6px; font-weight: 600; font-size: 14px;
-    text-decoration: none; color: #1a1a1a; background: var(--red);
+    text-decoration: none; color: #fff; background: var(--red);
     transition: all 0.3s; font-family: 'DM Sans', sans-serif;
   }
   .nav-cta:hover { background: #c62e3a; transform: translateY(-1px); }
@@ -67,14 +66,13 @@
     display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
     max-width: 1100px; align-items: center;
   }
-  .hero-content {}
   .hero-tag {
     font-family: 'JetBrains Mono', monospace;
     font-size: 12px; color: var(--red); letter-spacing: 2px;
     text-transform: uppercase; margin-bottom: 20px; font-weight: 500;
   }
   .hero h1 {
-    font-size: 56px; font-weight: 700; letter-spacing: -2.5px;
+    font-size: 52px; font-weight: 700; letter-spacing: -2.5px;
     line-height: 1.05; margin-bottom: 20px;
   }
   .hero h1 em { font-style: normal; color: var(--red); }
@@ -91,7 +89,7 @@
   .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
   .btn-red {
     padding: 16px 36px; border-radius: 6px; font-weight: 600; font-size: 16px;
-    text-decoration: none; color: #1a1a1a; background: var(--red);
+    text-decoration: none; color: #fff; background: var(--red);
     transition: all 0.3s; display: inline-block;
   }
   .btn-red:hover { background: #c62e3a; transform: translateY(-2px); box-shadow: 0 12px 40px rgba(230,57,70,0.2); }
@@ -106,7 +104,13 @@
   .hero-visual {
     display: flex; align-items: center; justify-content: center;
     background: var(--bg-elevated); border-radius: 24px; height: 480px;
-    border: 1px solid var(--border); font-size: 120px;
+    border: 1px solid var(--border); font-size: 100px;
+    position: relative; overflow: hidden;
+  }
+  .hero-visual-label {
+    position: absolute; bottom: 16px;
+    font-size: 12px; color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
   }
 
   /* SPECS */
@@ -114,11 +118,11 @@
     padding: 100px 48px;
     border-top: 1px solid var(--border);
   }
-  .specs-header {
+  .section-header {
     text-align: center; margin-bottom: 60px;
   }
-  .specs-header h2 { font-size: 36px; font-weight: 700; letter-spacing: -1.5px; margin-bottom: 8px; }
-  .specs-header p { color: var(--text-sub); font-size: 16px; }
+  .section-header h2 { font-size: 36px; font-weight: 700; letter-spacing: -1.5px; margin-bottom: 8px; }
+  .section-header p { color: var(--text-sub); font-size: 16px; }
 
   .specs-grid {
     display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
@@ -134,8 +138,35 @@
   }
   .spec-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
 
+  /* MISSIONS */
+  .missions-section { padding: 100px 48px; }
+  .missions-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    max-width: 1000px; margin: 0 auto;
+  }
+  .mission {
+    padding: 32px;
+    border: 1px solid var(--border); border-radius: 12px;
+    transition: all 0.3s; position: relative;
+  }
+  .mission:hover { border-color: var(--red); background: var(--bg-elevated); }
+  .mission-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 600; color: var(--red);
+    letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px;
+  }
+  .mission-title { font-size: 17px; font-weight: 600; margin-bottom: 8px; }
+  .mission-desc { font-size: 14px; color: var(--text-sub); line-height: 1.6; }
+  .mission-difficulty {
+    margin-top: 16px; display: flex; gap: 4px;
+  }
+  .mission-difficulty span {
+    width: 24px; height: 4px; border-radius: 2px; background: var(--border);
+  }
+  .mission-difficulty span.active { background: var(--red); }
+
   /* FEATURES */
-  .features-section { padding: 100px 48px; }
+  .features-section { padding: 100px 48px; border-top: 1px solid var(--border); }
   .features-grid {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
     max-width: 1000px; margin: 0 auto;
@@ -159,6 +190,11 @@
     display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
     max-width: 900px; margin: 0 auto;
   }
+  .box-category {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 600; color: var(--red);
+    letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px;
+  }
   .box-list { list-style: none; }
   .box-list li {
     font-size: 15px; color: var(--text-sub); padding: 12px 0;
@@ -177,7 +213,7 @@
     border-top: 1px solid var(--border);
   }
   .cta-section h2 { font-size: 40px; font-weight: 700; letter-spacing: -1.5px; margin-bottom: 12px; }
-  .cta-section p { color: var(--text-sub); font-size: 16px; margin-bottom: 32px; }
+  .cta-section p { color: var(--text-sub); font-size: 16px; margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto; }
 
   /* FOOTER */
   .footer {
@@ -188,6 +224,12 @@
   }
   .footer a { color: var(--text-muted); text-decoration: none; }
   .footer a:hover { color: #1a1a1a; }
+  .footer-parents {
+    font-size: 12px; color: var(--text-muted); text-decoration: none;
+    border: 1px solid var(--border); padding: 6px 14px; border-radius: 4px;
+    transition: all 0.3s;
+  }
+  .footer-parents:hover { border-color: var(--text-muted); color: #1a1a1a; }
 
   /* RESPONSIVE */
   @media (max-width: 768px) {
@@ -197,11 +239,12 @@
     .hero { padding: 100px 24px 60px; }
     .hero-grid { grid-template-columns: 1fr; gap: 40px; }
     .hero h1 { font-size: 36px; }
-    .hero-visual { height: 280px; font-size: 80px; }
+    .hero-visual { height: 280px; font-size: 64px; }
     .specs-grid { grid-template-columns: repeat(2, 1fr); }
+    .missions-grid { grid-template-columns: 1fr; }
     .features-grid { grid-template-columns: 1fr; }
     .box-grid { grid-template-columns: 1fr; }
-    .specs-section, .features-section, .box-section, .cta-section { padding: 60px 24px; }
+    .specs-section, .missions-section, .features-section, .box-section, .cta-section { padding: 60px 24px; }
     .footer { padding: 24px; flex-direction: column; text-align: center; }
   }
 </style>
@@ -212,10 +255,10 @@
   <a href="#" class="nav-brand">Kurth<span>Technik</span></a>
   <ul class="nav-links">
     <li><a href="#specs">Specs</a></li>
-    <li><a href="#features">Features</a></li>
+    <li><a href="#missions">Missions</a></li>
     <li><a href="#box">What's Included</a></li>
   </ul>
-  <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20pre-register%20for%20the%20OrbBot.%20Please%20notify%20me%20when%20sales%20start.%0A-%20Name%3A%0A-%20Email%3A%0A%0AKurthTechnik%20%28brand%20operated%20by%20%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="nav-cta">Pre-Register</a>
+  <a href="https://wa.me/85265427963?text=Hi%21%20I%27m%20interested%20in%20the%20Gripper%20Drone%20Kit.%0A-%20Name%3A%0A-%20Questions%3A%0A%0AKurthTechnik%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="nav-cta">Get Notified</a>
   <div class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open');">
     <span></span><span></span><span></span>
   </div>
@@ -225,142 +268,229 @@
 <section class="hero">
   <div class="hero-grid">
     <div class="hero-content">
-      <div class="hero-tag">KurthTechnik — Engineering Kits</div>
-      <h1>Orb<em>Bot</em></h1>
-      <p class="hero-desc">A DIY ball-balancing robot kit. Three-axis stabilisation, LQR control, real engineering. Designed in Germany. Shipped worldwide.</p>
-      <div class="hero-price">$150 <span>USD</span></div>
-      <div class="hero-shipping">Coming Soon · Free shipping worldwide</div>
+      <div class="hero-tag">KurthTechnik — Robotics Kits</div>
+      <h1>Gripper<em>Drone</em></h1>
+      <p class="hero-desc">Build your own indoor drone with a real gripper arm. Pick up objects, fly missions, compete with friends. Everything from scratch — ages 9 to 12.</p>
+      <div class="hero-shipping">Coming Soon · Hong Kong</div>
       <div class="hero-actions">
-        <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20place%20a%20deposit%20to%20secure%20an%20OrbBot%20kit.%0A-%20Name%3A%0A-%20Shipping%20address%3A%0A-%20Quantity%3A%0A%0AKurthTechnik%20%28brand%20operated%20by%20%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="btn-red">Reserve with Deposit →</a>
-        <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20pre-register%20for%20the%20OrbBot.%20Please%20notify%20me%20when%20sales%20start.%0A-%20Name%3A%0A-%20Email%3A%0A%0AKurthTechnik%20%28brand%20operated%20by%20%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="btn-ghost">Pre-Register — Get Notified</a>
+        <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20reserve%20a%20Gripper%20Drone%20Kit.%0A-%20Name%3A%0A-%20Address%3A%0A-%20Quantity%3A%0A%0AKurthTechnik%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="btn-red">Reserve a Kit</a>
+        <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20be%20notified%20when%20the%20Gripper%20Drone%20Kit%20is%20available.%0A-%20Name%3A%0A-%20Email%3A%0A%0AKurthTechnik%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="btn-ghost">Get Notified</a>
       </div>
     </div>
-    <div class="hero-visual">⚖️</div>
+    <div class="hero-visual">
+      🚁🦾
+      <span class="hero-visual-label">photo coming soon</span>
+    </div>
   </div>
 </section>
 
 <!-- SPECS -->
 <section class="specs-section" id="specs">
-  <div class="specs-header">
-    <h2>Built to balance.</h2>
-    <p>Real engineering in a compact kit.</p>
+  <div class="section-header">
+    <h2>Built to grab.</h2>
+    <p>A real drone with a real gripper. Not a toy.</p>
   </div>
   <div class="specs-grid">
     <div class="spec">
-      <div class="spec-value">3</div>
-      <div class="spec-label">Axes</div>
+      <div class="spec-value">330mm</div>
+      <div class="spec-label">Frame Size</div>
     </div>
     <div class="spec">
-      <div class="spec-value">LQR</div>
-      <div class="spec-label">Control</div>
+      <div class="spec-value">500g</div>
+      <div class="spec-label">Grip Capacity</div>
     </div>
     <div class="spec">
-      <div class="spec-value">6-DOF</div>
-      <div class="spec-label">IMU Sensor</div>
+      <div class="spec-value">4</div>
+      <div class="spec-label">Brushless Motors</div>
     </div>
     <div class="spec">
-      <div class="spec-value">~4h</div>
-      <div class="spec-label">Build Time</div>
+      <div class="spec-value">~8 min</div>
+      <div class="spec-label">Flight Time</div>
     </div>
     <div class="spec">
-      <div class="spec-value">3</div>
-      <div class="spec-label">Motors</div>
+      <div class="spec-value">2.4 kg</div>
+      <div class="spec-label">Total Thrust</div>
     </div>
     <div class="spec">
-      <div class="spec-value">USB-C</div>
-      <div class="spec-label">Programming</div>
+      <div class="spec-value">10</div>
+      <div class="spec-label">Missions</div>
     </div>
     <div class="spec">
-      <div class="spec-value">Open</div>
-      <div class="spec-label">Source Code</div>
+      <div class="spec-value">5</div>
+      <div class="spec-label">3D-Print Parts</div>
     </div>
     <div class="spec">
-      <div class="spec-value">CAD</div>
-      <div class="spec-label">Files Included</div>
+      <div class="spec-value">Indoor</div>
+      <div class="spec-label">Flight Zone</div>
     </div>
+  </div>
+</section>
+
+<!-- MISSIONS -->
+<section class="missions-section" id="missions">
+  <div class="section-header">
+    <h2>10 Missions. Can you beat them all?</h2>
+    <p>Start easy. Get harder. Each mission unlocks the next.</p>
+  </div>
+  <div class="missions-grid">
+
+    <div class="mission">
+      <div class="mission-number">Mission 01</div>
+      <h3 class="mission-title">Build Your Drone</h3>
+      <p class="mission-desc">Assemble the frame, mount the motors, connect the electronics. Your drone, built by you.</p>
+      <div class="mission-difficulty">
+        <span class="active"></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <div class="mission">
+      <div class="mission-number">Mission 02</div>
+      <h3 class="mission-title">Hover & Land</h3>
+      <p class="mission-desc">Take off, hold steady, and land on the target zone. Sounds simple? Try it.</p>
+      <div class="mission-difficulty">
+        <span class="active"></span><span class="active"></span><span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <div class="mission">
+      <div class="mission-number">Mission 03</div>
+      <h3 class="mission-title">Build the Gripper</h3>
+      <p class="mission-desc">3D-print the gripper parts, run the tendon cables, mount the servos. Mechanical engineering — your hands.</p>
+      <div class="mission-difficulty">
+        <span class="active"></span><span class="active"></span><span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <div class="mission">
+      <div class="mission-number">Mission 04</div>
+      <h3 class="mission-title">Grab a Ping Pong Ball</h3>
+      <p class="mission-desc">Fly to the ball, grab it mid-air, bring it back. First real grab — you'll remember this one.</p>
+      <div class="mission-difficulty">
+        <span class="active"></span><span class="active"></span><span class="active"></span><span></span><span></span>
+      </div>
+    </div>
+
+    <div class="mission">
+      <div class="mission-number">Mission 05</div>
+      <h3 class="mission-title">Water Bottle Transport</h3>
+      <p class="mission-desc">500g payload. Your drone at max capacity. Pick up, fly steady, set down on target. No spills.</p>
+      <div class="mission-difficulty">
+        <span class="active"></span><span class="active"></span><span class="active"></span><span class="active"></span><span></span>
+      </div>
+    </div>
+
+    <div class="mission">
+      <div class="mission-number">Mission 06</div>
+      <h3 class="mission-title">The Gauntlet</h3>
+      <p class="mission-desc">3 objects, 3 drop zones, 1 battery. Collect them all before your power runs out. The final test.</p>
+      <div class="mission-difficulty">
+        <span class="active"></span><span class="active"></span><span class="active"></span><span class="active"></span><span class="active"></span>
+      </div>
+    </div>
+
   </div>
 </section>
 
 <!-- FEATURES -->
 <section class="features-section" id="features">
-  <div class="specs-header">
-    <h2>Why OrbBot.</h2>
-    <p>Not a toy. A learning platform.</p>
+  <div class="section-header">
+    <h2>Why this kit.</h2>
+    <p>Real engineering. Not a follow-the-instructions toy.</p>
   </div>
   <div class="features-grid">
     <div class="feature">
-      <div class="feature-icon">🎓</div>
-      <h3 class="feature-title">Learn Real Control Theory</h3>
-      <p class="feature-desc">LQR control — the same mathematics used in aerospace and autonomous vehicles. Not simplified, not simulated. Real.</p>
+      <div class="feature-icon">🔧</div>
+      <h3 class="feature-title">You Build Everything</h3>
+      <p class="feature-desc">Frame, motors, electronics, gripper — all assembled by the kid. No pre-built modules, no shortcuts.</p>
     </div>
     <div class="feature">
-      <div class="feature-icon">🔩</div>
-      <h3 class="feature-title">Mechanical + Electrical + Software</h3>
-      <p class="feature-desc">Full-stack engineering in one kit. Assemble the chassis, solder the board, write the code. Every discipline, one project.</p>
+      <div class="feature-icon">🦾</div>
+      <h3 class="feature-title">Tendon-Driven Gripper</h3>
+      <p class="feature-desc">A real mechanical gripper with Dyneema tendon cables and servo motors. Grips up to 500g — enough for a water bottle.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🛡️</div>
+      <h3 class="feature-title">Prop Guards Included</h3>
+      <p class="feature-desc">Full propeller guards on all four arms. Indoor-safe. Kid-safe. Parent-approved.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🖨️</div>
+      <h3 class="feature-title">5 Printable Parts</h3>
+      <p class="feature-desc">Gripper fingers, base plate, tendon guides, servo spools, and landing gear extensions. All 3D-printed, all included.</p>
     </div>
     <div class="feature">
       <div class="feature-icon">📐</div>
       <h3 class="feature-title">Designed by an Engineer</h3>
-      <p class="feature-desc">Created by a RWTH Aachen mechanical engineering graduate. German precision, from PCB layout to chassis tolerances.</p>
-    </div>
-    <div class="feature">
-      <div class="feature-icon">🔓</div>
-      <h3 class="feature-title">Open Source</h3>
-      <p class="feature-desc">Full source code, CAD files, and schematics included. Modify, hack, extend. It's yours.</p>
+      <p class="feature-desc">Created by a mechanical engineering graduate from RWTH Aachen. Every part tested, every tolerance checked.</p>
     </div>
     <div class="feature">
       <div class="feature-icon">📦</div>
       <h3 class="feature-title">Everything Included</h3>
-      <p class="feature-desc">Every screw, every wire, every component. No hidden requirements, no "you also need..." surprises.</p>
-    </div>
-    <div class="feature">
-      <div class="feature-icon">🌍</div>
-      <h3 class="feature-title">Ships Worldwide</h3>
-      <p class="feature-desc">From Hong Kong to your door. Tracked shipping, secure packaging, typically 5–10 business days.</p>
+      <p class="feature-desc">Every screw, every cable, every propeller. Plus battery, charger, and remote control. Nothing extra to buy.</p>
     </div>
   </div>
 </section>
 
 <!-- WHAT'S IN THE BOX -->
 <section class="box-section" id="box">
-  <div class="specs-header">
+  <div class="section-header">
     <h2>What's in the box.</h2>
     <p>Everything you need. Nothing you don't.</p>
   </div>
   <div class="box-grid">
-    <ul class="box-list">
-      <li>Custom PCB (designed in KiCad)</li>
-      <li>Microcontroller board</li>
-      <li>6-DOF IMU sensor (accelerometer + gyroscope)</li>
-      <li>3× DC motors with encoders</li>
-      <li>Motor driver board</li>
-      <li>Omnidirectional wheels</li>
-      <li>Balancing ball</li>
-    </ul>
-    <ul class="box-list">
-      <li>3D-printed chassis parts</li>
-      <li>USB-C cable for programming</li>
-      <li>Battery + charging cable</li>
-      <li>All screws, nuts, and standoffs</li>
-      <li>Assembly guide (step-by-step)</li>
-      <li>Source code + CAD files (download)</li>
-      <li>Access to community Discord</li>
-    </ul>
+    <div>
+      <div class="box-category">Drone</div>
+      <ul class="box-list">
+        <li>F330 Frame Kit (330mm) + Landing Gear</li>
+        <li>4x 1806 2400KV Brushless Motors (CW+CCW)</li>
+        <li>4x 12A ESC (Electronic Speed Controllers)</li>
+        <li>F411 Flight Controller (Betaflight/iNav)</li>
+        <li>FlySky FS-i6 Transmitter + FS-iA6B Receiver</li>
+        <li>5030 Propellers (5 CW + 5 CCW — spares included)</li>
+        <li>Prop Guards 330mm</li>
+        <li>3S 1500mAh LiPo Battery + B3 Balance Charger</li>
+        <li>XT60 Connectors + 14AWG Silicone Cable</li>
+      </ul>
+    </div>
+    <div>
+      <div class="box-category">Gripper</div>
+      <ul class="box-list">
+        <li>2x MG996R Servo (Metal Gear, ~11kg·cm)</li>
+        <li>Dyneema Cord 0.5mm (Tendon Cable)</li>
+        <li>4x 623ZZ Ball Bearings (3x10x4mm)</li>
+        <li>2x Servo Extension Cable 30cm</li>
+        <li>M2/M3 Screw Set</li>
+      </ul>
+      <div class="box-category" style="margin-top: 32px;">3D-Printed Parts</div>
+      <ul class="box-list">
+        <li>Gripper Fingers (2x)</li>
+        <li>Gripper Base Plate</li>
+        <li>Tendon Guides (4x)</li>
+        <li>Servo Spools (2x)</li>
+        <li>Landing Gear Extension (optional)</li>
+      </ul>
+      <div class="box-category" style="margin-top: 32px;">Extras</div>
+      <ul class="box-list">
+        <li>Step-by-step Build Guide</li>
+        <li>10 Mission Cards</li>
+      </ul>
+    </div>
   </div>
 </section>
 
 <!-- CTA -->
 <section class="cta-section">
-  <h2>Ready to build?</h2>
-  <p>The OrbBot is coming soon. Secure yours now with a deposit, or pre-register to get notified when sales start.</p>
+  <h2>Ready to fly?</h2>
+  <p>First batch is limited. Reserve your kit now or get notified when we launch.</p>
   <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-    <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20place%20a%20deposit%20to%20secure%20an%20OrbBot%20kit.%0A-%20Name%3A%0A-%20Shipping%20address%3A%0A-%20Quantity%3A%0A%0AKurthTechnik%20%28brand%20operated%20by%20%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="btn-red">Reserve with Deposit — $150 USD →</a>
-    <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20pre-register%20for%20the%20OrbBot.%20Please%20notify%20me%20when%20sales%20start.%0A-%20Name%3A%0A-%20Email%3A%0A%0AKurthTechnik%20%28brand%20operated%20by%20%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="btn-ghost">Pre-Register — Get Notified</a>
+    <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20reserve%20a%20Gripper%20Drone%20Kit.%0A-%20Name%3A%0A-%20Address%3A%0A-%20Quantity%3A%0A%0AKurthTechnik%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="btn-red">Reserve a Kit</a>
+    <a href="https://wa.me/85265427963?text=Hi%21%20I%27d%20like%20to%20be%20notified%20when%20the%20Gripper%20Drone%20Kit%20is%20available.%0A-%20Name%3A%0A-%20Email%3A%0A%0AKurthTechnik%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="btn-ghost">Get Notified</a>
   </div>
 </section>
 
 <div class="footer">
-  <span>© KurthTechnik — a brand of Space of Possibilities Limited · Hong Kong</span>
+  <span>&copy; KurthTechnik &mdash; a brand of Space of Possibilities Limited &middot; Hong Kong</span>
+  <a href="eltern.html" class="footer-parents">For Parents &amp; Schools</a>
   <span>
     <a href="mailto:contact@spaceop.education" style="margin-right: 16px;">contact@spaceop.education</a>
     <a href="https://wa.me/85265427963">WhatsApp</a>

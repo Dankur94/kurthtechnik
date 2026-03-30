@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KurthTechnik — For Parents & Schools</title>
+<meta name="description" content="What your child actually learns while building a drone. HK Mathematics Curriculum P4–P6 mapped to every mission.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f5f0;
+    --bg-elevated: #ffffff;
+    --text: #1a1a1a;
+    --text-sub: #666;
+    --text-muted: #999;
+    --red: #e63946;
+    --border: rgba(0,0,0,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: #1a1a1a;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  nav {
+    padding: 20px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(245,245,240,0.9); backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-brand {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 16px; font-weight: 600; color: #1a1a1a;
+    text-decoration: none; letter-spacing: -0.5px;
+  }
+  .nav-brand span { color: var(--red); }
+  .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+  .nav-links a { color: var(--text-sub); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.3s; }
+  .nav-links a:hover { color: #1a1a1a; }
+  .nav-cta {
+    padding: 10px 24px; border-radius: 6px; font-weight: 600; font-size: 14px;
+    text-decoration: none; color: #fff; background: var(--red);
+    transition: all 0.3s; font-family: 'DM Sans', sans-serif;
+  }
+  .nav-cta:hover { background: #c62e3a; transform: translateY(-1px); }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+  .hamburger span { width: 22px; height: 2px; background: #1a1a1a; border-radius: 2px; }
+
+  /* HERO */
+  .hero {
+    padding: 160px 48px 80px;
+    max-width: 800px; margin: 0 auto;
+  }
+  .hero-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; color: var(--red); letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 20px; font-weight: 500;
+  }
+  .hero h1 {
+    font-size: 44px; font-weight: 700; letter-spacing: -2px;
+    line-height: 1.15; margin-bottom: 20px;
+  }
+  .hero-desc {
+    font-size: 17px; color: var(--text-sub); max-width: 600px;
+    line-height: 1.8; margin-bottom: 16px;
+  }
+
+  /* PRINCIPLE */
+  .principle {
+    padding: 80px 48px;
+    border-top: 1px solid var(--border);
+  }
+  .principle-inner {
+    max-width: 800px; margin: 0 auto;
+  }
+  .principle h2 {
+    font-size: 28px; font-weight: 700; letter-spacing: -1px; margin-bottom: 24px;
+  }
+  .principle-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  }
+  .principle-card {
+    padding: 24px;
+    border: 1px solid var(--border); border-radius: 12px;
+    background: var(--bg-elevated);
+  }
+  .principle-card h3 {
+    font-size: 15px; font-weight: 600; margin-bottom: 8px;
+    color: var(--red);
+  }
+  .principle-card p { font-size: 14px; color: var(--text-sub); line-height: 1.6; }
+
+  /* CURRICULUM */
+  .curriculum {
+    padding: 80px 48px;
+    border-top: 1px solid var(--border);
+  }
+  .curriculum-inner {
+    max-width: 900px; margin: 0 auto;
+  }
+  .curriculum h2 {
+    font-size: 28px; font-weight: 700; letter-spacing: -1px; margin-bottom: 8px;
+  }
+  .curriculum > .section-sub {
+    color: var(--text-sub); font-size: 16px; margin-bottom: 40px;
+  }
+  .section-sub {
+    color: var(--text-sub); font-size: 16px; margin-bottom: 40px;
+    max-width: 900px; margin-left: auto; margin-right: auto;
+  }
+
+  .curr-category {
+    margin-bottom: 48px;
+  }
+  .curr-category h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; font-weight: 600; color: var(--red);
+    letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px;
+    padding-bottom: 8px; border-bottom: 1px solid var(--border);
+  }
+
+  .curr-table {
+    width: 100%; border-collapse: collapse;
+  }
+  .curr-table th {
+    text-align: left; font-size: 11px; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 1px; padding: 12px 16px;
+    border-bottom: 1px solid var(--border); font-weight: 500;
+  }
+  .curr-table td {
+    font-size: 14px; padding: 14px 16px;
+    border-bottom: 1px solid var(--border); color: var(--text-sub);
+    vertical-align: top;
+  }
+  .curr-table td:first-child { color: var(--text); font-weight: 500; }
+  .curr-table tr:hover { background: var(--bg-elevated); }
+
+  /* MISSION MAP */
+  .mission-map {
+    padding: 80px 48px;
+    border-top: 1px solid var(--border);
+  }
+  .mission-map-inner {
+    max-width: 900px; margin: 0 auto;
+  }
+  .mission-map h2 {
+    font-size: 28px; font-weight: 700; letter-spacing: -1px; margin-bottom: 8px;
+  }
+  .phase {
+    margin-bottom: 32px; padding: 24px;
+    border: 1px solid var(--border); border-radius: 12px;
+  }
+  .phase-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 12px;
+  }
+  .phase-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; font-weight: 600; color: var(--red);
+  }
+  .phase-level { font-size: 12px; color: var(--text-muted); }
+  .phase h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+  .phase p { font-size: 14px; color: var(--text-sub); }
+  .phase-skills {
+    margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap;
+  }
+  .phase-skill {
+    font-size: 12px; padding: 4px 12px; border-radius: 4px;
+    background: var(--bg); border: 1px solid var(--border);
+    color: var(--text-sub);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* CTA */
+  .cta-section {
+    padding: 80px 48px; text-align: center;
+    border-top: 1px solid var(--border);
+  }
+  .cta-section h2 { font-size: 32px; font-weight: 700; letter-spacing: -1px; margin-bottom: 12px; }
+  .cta-section p { color: var(--text-sub); font-size: 16px; margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto; }
+  .btn-red {
+    padding: 16px 36px; border-radius: 6px; font-weight: 600; font-size: 16px;
+    text-decoration: none; color: #fff; background: var(--red);
+    transition: all 0.3s; display: inline-block;
+  }
+  .btn-red:hover { background: #c62e3a; transform: translateY(-2px); box-shadow: 0 12px 40px rgba(230,57,70,0.2); }
+  .btn-ghost {
+    padding: 16px 36px; border-radius: 6px; font-weight: 600; font-size: 16px;
+    text-decoration: none; color: #1a1a1a;
+    border: 1px solid var(--border); background: transparent;
+    transition: all 0.3s; display: inline-block;
+  }
+  .btn-ghost:hover { border-color: #333; }
+
+  .footer {
+    padding: 32px 48px;
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px; color: var(--text-muted); flex-wrap: wrap; gap: 12px;
+  }
+  .footer a { color: var(--text-muted); text-decoration: none; }
+  .footer a:hover { color: #1a1a1a; }
+
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .hero { padding: 110px 24px 60px; }
+    .hero h1 { font-size: 32px; }
+    .principle-grid { grid-template-columns: 1fr; }
+    .curr-table { font-size: 13px; }
+    .curr-table th, .curr-table td { padding: 10px 8px; }
+    .principle, .curriculum, .mission-map, .cta-section { padding: 60px 24px; }
+    .footer { padding: 24px; flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">Kurth<span>Technik</span></a>
+  <ul class="nav-links">
+    <li><a href="#approach">Our Approach</a></li>
+    <li><a href="#curriculum">Curriculum</a></li>
+    <li><a href="#progression">Progression</a></li>
+  </ul>
+  <a href="index.html" class="nav-cta">&larr; Back to Kit</a>
+  <div class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open');">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag">For Parents &amp; Schools</div>
+  <h1>What your child actually learns while building a drone.</h1>
+  <p class="hero-desc">
+    Your child sees missions, challenges, and a drone that grabs things. What they don't see: they're working through the Hong Kong Mathematics Curriculum (P4–P6) — without ever opening a textbook.
+  </p>
+  <p class="hero-desc">
+    Every measurement, every calculation, every problem they solve has a real consequence: the drone flies, or it doesn't. The gripper grabs, or it drops. That's the feedback loop no worksheet can replicate.
+  </p>
+</section>
+
+<!-- APPROACH -->
+<section class="principle" id="approach">
+  <div class="principle-inner">
+    <h2>Our approach: fun first, learning hidden.</h2>
+    <div class="principle-grid">
+      <div class="principle-card">
+        <h3>They calculate because they must</h3>
+        <p>Not because they should. "Will my drone take off?" requires addition and weight units. The child doesn't think "math" — they think "will it fly?"</p>
+      </div>
+      <div class="principle-card">
+        <h3>Mistakes are flight data</h3>
+        <p>A wrong calculation means the gripper misses. Not a red mark on paper — a real, visible result they want to fix themselves.</p>
+      </div>
+      <div class="principle-card">
+        <h3>Hands before formulas</h3>
+        <p>First they measure with a real ruler on a real part. Then — and only then — does the formula make sense.</p>
+      </div>
+      <div class="principle-card">
+        <h3>No child ever sees the word "math"</h3>
+        <p>Mission cards have a cool front (the challenge) and a hidden back (the curriculum reference — for you, not for them).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CURRICULUM MAPPING -->
+<section class="curriculum" id="curriculum">
+  <div class="curriculum-inner">
+    <h2>HK Curriculum Mapping (P4–P6)</h2>
+    <p class="section-sub">Every mission maps to real learning objectives from the Hong Kong Mathematics Curriculum.</p>
+
+    <div class="curr-category">
+      <h3>Geometry</h3>
+      <table class="curr-table">
+        <tr><th>Learning Objective</th><th>What the Child Experiences</th></tr>
+        <tr><td>Measuring &amp; naming angles</td><td>Set the gripper servo to 45° — does it grab the ball?</td></tr>
+        <tr><td>Symmetry</td><td>Balance the drone on one finger — is the weight even?</td></tr>
+        <tr><td>Area &amp; perimeter</td><td>Design a custom shell — does it fit on the base plate?</td></tr>
+        <tr><td>Volume</td><td>How much filament does the 3D print need? Calculate!</td></tr>
+        <tr><td>Coordinates</td><td>Fly the drone to position (3, 2) on the floor grid.</td></tr>
+      </table>
+    </div>
+
+    <div class="curr-category">
+      <h3>Measurement &amp; Units</h3>
+      <table class="curr-table">
+        <tr><th>Learning Objective</th><th>What the Child Experiences</th></tr>
+        <tr><td>mm / cm / m conversion</td><td>Propeller measures 127mm — how many cm is that?</td></tr>
+        <tr><td>Weight (g / kg)</td><td>Drone 630g + Gripper 120g + Battery 130g = ?</td></tr>
+        <tr><td>Weight limits</td><td>Max 1130g total — how heavy can the custom part be?</td></tr>
+        <tr><td>Time</td><td>Battery lasts 8 min, 3 objects to grab — time per object?</td></tr>
+        <tr><td>Temperature</td><td>LiPo max 45°C — measure after flight with IR thermometer.</td></tr>
+      </table>
+    </div>
+
+    <div class="curr-category">
+      <h3>Numbers &amp; Operations</h3>
+      <table class="curr-table">
+        <tr><th>Learning Objective</th><th>What the Child Experiences</th></tr>
+        <tr><td>Fractions</td><td>Battery at 3/4 — enough for one more mission?</td></tr>
+        <tr><td>Decimals</td><td>Tolerance is 0.2mm — is 4.3mm close enough to 4.1mm?</td></tr>
+        <tr><td>Percentages</td><td>Motor at 70% — how much thrust in grams?</td></tr>
+        <tr><td>Ratios</td><td>Thrust-to-weight 2.1:1 — what does that mean?</td></tr>
+        <tr><td>Basic operations</td><td>4 motors &times; $8.50 each = ? Build your shopping list.</td></tr>
+      </table>
+    </div>
+
+    <div class="curr-category">
+      <h3>Data &amp; Statistics</h3>
+      <table class="curr-table">
+        <tr><th>Learning Objective</th><th>What the Child Experiences</th></tr>
+        <tr><td>Reading tables</td><td>Which motor has the best rating? Read the comparison table.</td></tr>
+        <tr><td>Bar charts</td><td>Log your flight times — are you getting better?</td></tr>
+        <tr><td>Averages</td><td>5 flights: 3:20, 2:50, 4:10, 3:30, 3:50 — what's the average?</td></tr>
+        <tr><td>Probability</td><td>3 red balls, 5 blue — which one will the gripper grab?</td></tr>
+      </table>
+    </div>
+
+    <div class="curr-category">
+      <h3>Algebra Foundations (P5–P6)</h3>
+      <table class="curr-table">
+        <tr><th>Learning Objective</th><th>What the Child Experiences</th></tr>
+        <tr><td>Pattern recognition</td><td>15mm grid — where's the next mounting point?</td></tr>
+        <tr><td>Simple equations</td><td>1130g &minus; 630g = ? How much payload left?</td></tr>
+        <tr><td>Variables</td><td>x = servo angle. x=90 &rarr; gripper closed. x=45 &rarr; ?</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION PROGRESSION -->
+<section class="mission-map" id="progression">
+  <div class="mission-map-inner">
+    <h2>Mission progression</h2>
+    <p class="section-sub">Difficulty and math concepts build gradually across 10 missions.</p>
+
+    <div class="phase">
+      <div class="phase-header">
+        <span class="phase-title">Mission 1–3</span>
+        <span class="phase-level">Beginner</span>
+      </div>
+      <h3>Assembly — "I'm building a drone"</h3>
+      <p>The child assembles the drone from parts. Every step involves measuring, counting, and weighing.</p>
+      <div class="phase-skills">
+        <span class="phase-skill">Addition</span>
+        <span class="phase-skill">Length (mm/cm)</span>
+        <span class="phase-skill">Weight (g/kg)</span>
+        <span class="phase-skill">Counting</span>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-header">
+        <span class="phase-title">Mission 4–6</span>
+        <span class="phase-level">Intermediate</span>
+      </div>
+      <h3>First Flights — "I'm flying!"</h3>
+      <p>Hovering, landing on targets, navigating a grid. Time pressure from battery life adds urgency.</p>
+      <div class="phase-skills">
+        <span class="phase-skill">Coordinates</span>
+        <span class="phase-skill">Time</span>
+        <span class="phase-skill">Percentages</span>
+        <span class="phase-skill">Division</span>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-header">
+        <span class="phase-title">Mission 7–9</span>
+        <span class="phase-level">Advanced</span>
+      </div>
+      <h3>Gripper Missions — "I'm grabbing things"</h3>
+      <p>Building the gripper, calibrating servo angles, calculating payload limits. Real mechanical engineering.</p>
+      <div class="phase-skills">
+        <span class="phase-skill">Angles</span>
+        <span class="phase-skill">Fractions</span>
+        <span class="phase-skill">Averages</span>
+        <span class="phase-skill">Weight limits</span>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-header">
+        <span class="phase-title">Mission 10+</span>
+        <span class="phase-level">Expert</span>
+      </div>
+      <h3>Custom Design — "My own drone"</h3>
+      <p>Designing custom shells, calculating filament, optimising thrust-to-weight ratios. Full creative freedom.</p>
+      <div class="phase-skills">
+        <span class="phase-skill">Area</span>
+        <span class="phase-skill">Volume</span>
+        <span class="phase-skill">Ratios</span>
+        <span class="phase-skill">Variables</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Questions?</h2>
+  <p>We're happy to walk you through the kit, the curriculum mapping, or arrange a demo session at your school.</p>
+  <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+    <a href="https://wa.me/85265427963?text=Hi%21%20I%27m%20a%20parent%2Fteacher%20and%20I%20have%20questions%20about%20the%20Gripper%20Drone%20Kit%20and%20its%20curriculum%20integration.%0A%0AKurthTechnik%20%28%C2%A9%20Space%20of%20Possibilities%20Limited%29" target="_blank" class="btn-red">WhatsApp Us</a>
+    <a href="index.html" class="btn-ghost">&larr; Back to the Kit</a>
+  </div>
+</section>
+
+<div class="footer">
+  <span>&copy; KurthTechnik &mdash; a brand of Space of Possibilities Limited &middot; Hong Kong</span>
+  <span>
+    <a href="mailto:contact@spaceop.education" style="margin-right: 16px;">contact@spaceop.education</a>
+    <a href="https://wa.me/85265427963">WhatsApp</a>
+  </span>
+</div>
+
+</body>
+</html>
