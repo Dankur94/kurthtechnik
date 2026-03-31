@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KurthTechnik — DIY Robotics Kits</title>
-<meta name="description" content="German-engineered DIY robotics kits. Gripper Drone Kit for ages 9–15. OrbBot self-balancing robot for university students. Designed in Hong Kong.">
+<meta name="description" content="German-engineered DIY robotics kits. Gripper Drone Kit for ages 9–15. OrbBot self-balancing robot for university students.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -26,27 +26,43 @@
     color: #1a1a1a;
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
   }
 
-  .container {
-    max-width: 900px;
-    width: 100%;
-    padding: 60px 48px;
-    text-align: center;
+  /* NAV */
+  nav {
+    padding: 20px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(245,245,240,0.9); backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
   }
-
-  /* BRAND */
-  .brand {
+  .nav-brand {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 18px; font-weight: 600; color: #1a1a1a;
-    letter-spacing: -0.5px; margin-bottom: 60px;
+    font-size: 16px; font-weight: 600; color: #1a1a1a;
+    text-decoration: none; letter-spacing: -0.5px;
   }
-  .brand span { color: var(--red); }
+  .nav-brand span { color: var(--red); }
+  .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+  .nav-links a { color: var(--text-sub); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.3s; }
+  .nav-links a:hover { color: #1a1a1a; }
+  .nav-cta {
+    padding: 10px 24px; border-radius: 6px; font-weight: 600; font-size: 14px;
+    text-decoration: none; color: #fff; background: var(--red);
+    transition: all 0.3s; font-family: 'DM Sans', sans-serif;
+  }
+  .nav-cta:hover { background: #c62e3a; transform: translateY(-1px); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+  .hamburger span { width: 22px; height: 2px; background: #1a1a1a; border-radius: 2px; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 120px 48px 80px;
+  }
+  .hero-inner {
+    max-width: 900px; width: 100%; text-align: center;
+  }
 
   /* HEADLINE */
   h1 {
@@ -138,71 +154,157 @@
   }
   .product:hover .product-arrow { transform: translateX(6px); }
 
+  /* ABOUT SECTION */
+  .about {
+    max-width: 900px; margin: 0 auto;
+    padding: 80px 48px;
+    text-align: center;
+  }
+  .about-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 600; color: var(--red);
+    letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px;
+  }
+  .about h2 {
+    font-size: 36px; font-weight: 700; letter-spacing: -1.5px;
+    margin-bottom: 24px; line-height: 1.15;
+  }
+  .about p {
+    font-size: 17px; color: var(--text-sub); line-height: 1.8;
+    max-width: 600px; margin: 0 auto 16px;
+  }
+  .about-values {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px;
+    margin-top: 48px; text-align: left;
+  }
+  .about-value h3 {
+    font-size: 16px; font-weight: 700; margin-bottom: 8px;
+    letter-spacing: -0.3px;
+  }
+  .about-value p {
+    font-size: 14px; color: var(--text-sub); line-height: 1.6;
+    margin: 0;
+  }
+  .about-divider {
+    width: 48px; height: 3px; background: var(--red);
+    margin: 0 auto 40px; border-radius: 2px;
+  }
+
   /* FOOTER */
   .footer {
     font-size: 12px; color: var(--text-muted);
     text-align: center; line-height: 1.8;
+    padding: 40px 48px;
+    border-top: 1px solid var(--border);
   }
   .footer a { color: var(--text-muted); text-decoration: none; }
   .footer a:hover { color: var(--text); }
 
   /* RESPONSIVE */
   @media (max-width: 768px) {
-    .container { padding: 40px 24px; }
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .nav-links.open {
+      display: flex; flex-direction: column;
+      position: absolute; top: 100%; left: 0; right: 0;
+      background: rgba(245,245,240,0.97); backdrop-filter: blur(20px);
+      padding: 24px; gap: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero { padding: 100px 24px 60px; min-height: auto; }
     h1 { font-size: 32px; letter-spacing: -1.5px; }
     .subtitle { font-size: 16px; }
     .products { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
     .product { padding: 28px 24px; }
     .product-visual { height: 120px; font-size: 40px; }
     .product-name { font-size: 22px; }
+    .about { padding: 60px 24px; }
+    .about h2 { font-size: 28px; }
+    .about-values { grid-template-columns: 1fr; gap: 24px; }
   }
 </style>
 </head>
 <body>
 
-<div class="container">
-  <div class="brand">Kurth<span>Technik</span></div>
-
-  <h1>We build<br>DIY <em>robotics</em> kits.</h1>
-  <p class="subtitle">German-engineered hardware. Open-source firmware. Designed in Hong Kong, 30 minutes from Shenzhen. You build it, you understand it, you keep it.</p>
-
-  <div class="products">
-
-    <a href="drone.html" class="product">
-      <div class="product-visual">
-        🚁🦾
-        <span class="product-visual-label">photo coming soon</span>
-      </div>
-      <div class="product-tag">Ages 9–15</div>
-      <div class="product-name">Gripper Drone Kit</div>
-      <p class="product-desc">Indoor drone with a real mechanical gripper arm. 10 missions, 5 3D-printed parts, AI-assisted coding. Pick up objects, fly missions, compete with friends.</p>
-      <div class="product-meta">
-        <div class="product-price">$150 <span>USD</span></div>
-        <span class="product-arrow">View Kit →</span>
-      </div>
-    </a>
-
-    <a href="orbbot.html" class="product">
-      <div class="product-visual">
-        ⊙
-        <span class="product-visual-label">photo coming soon</span>
-      </div>
-      <div class="product-tag">University &amp; Advanced</div>
-      <div class="product-name">OrbBot</div>
-      <p class="product-desc">Self-balancing robot on a ball. Three-axis stabilisation, LQR control, 6-DOF IMU. Real engineering for university students and advanced builders.</p>
-      <div class="product-meta">
-        <div class="product-price" style="color: var(--text-muted); font-size: 16px;">Coming Soon</div>
-        <span class="product-arrow">View Kit →</span>
-      </div>
-    </a>
-
+<nav>
+  <a href="index.html" class="nav-brand">Kurth<span>Technik</span></a>
+  <ul class="nav-links">
+    <li><a href="#kits">Kits</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="mailto:contact@spaceop.education">Contact</a></li>
+  </ul>
+  <div class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
   </div>
+</nav>
 
-  <div class="footer">
-    &copy; KurthTechnik &mdash; a brand of Space of Possibilities Limited &middot; Hong Kong<br>
-    <a href="mailto:contact@spaceop.education" style="margin-right: 12px;">contact@spaceop.education</a>
-    <a href="https://wa.me/85265427963">WhatsApp</a>
+<section class="hero">
+  <div class="hero-inner">
+    <h1>We build<br>DIY <em>robotics</em> kits.</h1>
+    <p class="subtitle">German-engineered hardware. Open-source firmware. You build it, you understand it, you keep it.</p>
+
+    <div class="products" id="kits">
+
+      <a href="drone.html" class="product">
+        <div class="product-visual">
+          🚁🦾
+          <span class="product-visual-label">photo coming soon</span>
+        </div>
+        <div class="product-tag">Ages 9–15</div>
+        <div class="product-name">Gripper Drone Kit</div>
+        <p class="product-desc">Indoor drone with a real mechanical gripper arm. 10 missions, 5 3D-printed parts, AI-assisted coding. Pick up objects, fly missions, compete with friends.</p>
+        <div class="product-meta">
+          <div class="product-price">$150 <span>USD</span></div>
+          <span class="product-arrow">View Kit →</span>
+        </div>
+      </a>
+
+      <a href="orbbot.html" class="product">
+        <div class="product-visual">
+          ⊙
+          <span class="product-visual-label">photo coming soon</span>
+        </div>
+        <div class="product-tag">University &amp; Advanced</div>
+        <div class="product-name">OrbBot</div>
+        <p class="product-desc">Self-balancing robot on a ball. Three-axis stabilisation, LQR control, 6-DOF IMU. Real engineering for university students and advanced builders.</p>
+        <div class="product-meta">
+          <div class="product-price" style="color: var(--text-muted); font-size: 16px;">Coming Soon</div>
+          <span class="product-arrow">View Kit →</span>
+        </div>
+      </a>
+
+    </div>
   </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-tag">Our Vision</div>
+  <div class="about-divider"></div>
+  <h2>Real hardware.<br>Real understanding.</h2>
+  <p>We believe the best way to learn engineering is to build something real — not watch a tutorial. Our kits are designed so that every part has a purpose, every wire has a reason, and every student walks away with something they built themselves.</p>
+  <p>No black boxes. No pre-assembled shortcuts. Just clean engineering that young builders can actually understand.</p>
+
+  <div class="about-values">
+    <div class="about-value">
+      <h3>Build, don't consume</h3>
+      <p>Every kit is assembled from scratch. Soldering, wiring, 3D-printed parts — students do it all.</p>
+    </div>
+    <div class="about-value">
+      <h3>Open source</h3>
+      <p>All firmware, 3D models, and documentation are open. Modify, improve, make it your own.</p>
+    </div>
+    <div class="about-value">
+      <h3>AI-assisted coding</h3>
+      <p>Students describe what they want in plain language. AI generates the code. They learn by iterating, not memorising syntax.</p>
+    </div>
+  </div>
+</section>
+
+<div class="footer">
+  &copy; KurthTechnik &mdash; a brand of Space of Possibilities Limited &middot; Hong Kong<br>
+  <a href="mailto:contact@spaceop.education" style="margin-right: 12px;">contact@spaceop.education</a>
+  <a href="https://wa.me/85265427963">WhatsApp</a>
 </div>
 
 </body>
